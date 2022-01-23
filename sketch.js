@@ -53,8 +53,8 @@ var startingPoints;
 let abrahamReg;
 let abrahamBlack;
 function preload() {
-  abrahamReg = loadFont('Fonts/AbrahamTRIAL-Regular.otf');
-  abrahamBlack = loadFont('Fonts/AbrahamTRIAL-Black.otf');
+  abrahamReg = loadFont('https://cdn.jsdelivr.net/gh/kshach/futurefit5@main/Fonts/AbrahamTRIAL-Regular.otf');
+  abrahamBlack = loadFont('https://cdn.jsdelivr.net/gh/kshach/futurefit5@main/Fonts/AbrahamTRIAL-Black.otf');
 }
 
 function setup() {

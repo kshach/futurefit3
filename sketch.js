@@ -1,5 +1,3 @@
-// Original code by The Wizard Bear
-
 const string = "Future Fit #3"; //words to be displayed
 const size = 92; //font size
 const showText = true; //whether or not to have an overlay of the original text (in the background color)

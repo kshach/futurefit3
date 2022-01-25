@@ -39,8 +39,8 @@ var startingPoints;
 let abrahamReg;
 let abrahamBlack;
 function preload() {
-  abrahamReg = loadFont('https://github.com/kshach/futurefit5/raw/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Regular.otf');
-  abrahamBlack = loadFont('https://github.com/kshach/futurefit5/raw/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
+  abrahamReg = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/77f87b14759547a81c2ac71d8843805ed3696332/Fonts/AbrahamTRIAL-Regular.otf');
+  abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Regular.otf');
 }
 
 function setup() {

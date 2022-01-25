@@ -151,7 +151,7 @@ function draw() {
 	noFill();
       //fill(36,96,45, 255);
       stroke('#EFA89B');
-      strokeWeight(2);
+      strokeWeight(6);
 	  text("Future Fit #3",  width/8, height/8*7);
     pop();
     

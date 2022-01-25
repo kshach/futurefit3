@@ -42,7 +42,7 @@ let abrahamReg;
 let abrahamBlack;
 function preload() {
   abrahamReg = loadFont('https://cdn.jsdelivr.net/gh/kshach/futurefit5@main/Fonts/AbrahamTRIAL-Regular.otf');
-  abrahamBlack = loadFont('https://cdn.jsdelivr.net/gh/kshach/futurefit5@main/Fonts/AbrahamTRIAL-Black.otf');
+  abrahamBlack = loadFont('https://github.com/kshach/futurefit5/blob/7d8694ed46b0ec7e03b77d355bce63ee79646cb1/Fonts/AbrahamTRIAL-Black.otf?raw=true');
 }
 
 function setup() {

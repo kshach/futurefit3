@@ -61,11 +61,9 @@ function setup() {
    
   //angleMode(DEGREES);
   createCanvas(0.8*windowHeight, windowHeight);
-    //angleMode(DEGREES);
     x_spacing = windowHeight/4*3/cloth_particles_wide;
     backgroundColor = color('#24602D');
 	background(backgroundColor);
-    //textAlign(CENTER);
 	textFont(abrahamBlack);
 	textSize(size);
 	fill(color('#24602D'), textAlpha);
@@ -78,23 +76,11 @@ function setup() {
   
   noCursor();
    physics=new VerletPhysics2D();
-  physics.addBehavior(new GravityBehavior(new Vec2D(0,0.5)));
+  physics.addBehavior(new GravityBehavior(new Vec2D(0,0.8)));
 
   // Set the world's bounding box (particles can't leave this box)
   physics.setWorldBounds(new Rect(0,0,width,height));
-  
-    
-	
-  // Initialize the physics world
- 
-  
-  // Now we'll create a 2d array of particles called particles[i][j]
-  // where i is the column and j is the row of the particle
-  // so e.g. particles[0][0] contains the particle in the 1st row & 1st column
-  // and particles[5][10] contains the particle in the (5+1)th = 6th column & (10+1)th = 11th row 
-  
 
-  // Go through each column of the cloth..
   for(var i = 0; i<cloth_particles_wide; i++){
 
     // this is how we create a 2D array
@@ -176,9 +162,10 @@ function draw() {
     }
   }
   push();
-      fill(36,96,45, 255);
+	noFill();
+      //fill(36,96,45, 255);
       stroke('#EFA89B');
-      //strokeWeight(2);
+      strokeWeight(2);
 	  text("Future Fit #3",  width/8, height/8*7);
     pop();
     

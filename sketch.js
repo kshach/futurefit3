@@ -5,7 +5,7 @@ const textAlpha = 255; //the alpha of the text if displayed (low value will make
 const strokeAlpha = 20; //the alpha of the lines (lower numbers are more transparent)
 const strokeColor = '#EFA89B'; //the line color
 
-const fontSampleFactor = 0.03; //How many points there are: the higher the number, the closer together they are (more detail)
+const fontSampleFactor = 0.02; //How many points there are: the higher the number, the closer together they are (more detail)
 
 // These set how many particles wide and tall the cloth is:
 var cloth_particles_wide = 20;
@@ -16,6 +16,7 @@ var cloth_width = 300;
 var cloth_height = 300;
 
 var stiffness = 1; //spring stiffness
+var gravStr = 6;
 //***********************************************************
 
 var physics; 
@@ -28,7 +29,7 @@ var y_spacing = cloth_height/cloth_particles_tall;
 var i0 = cloth_particles_wide-1;
 var j0 = cloth_particles_tall-1;
 
-
+var mouseRnd = 10;
 
 let start;
 let end;
@@ -40,7 +41,7 @@ let abrahamReg;
 let abrahamBlack;
 function preload() {
   abrahamReg = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/77f87b14759547a81c2ac71d8843805ed3696332/Fonts/AbrahamTRIAL-Regular.otf');
-  abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Regular.otf');
+  abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
 }
 
 function setup() {
@@ -52,6 +53,7 @@ function setup() {
 	textSize(size);
 	fill(color('#24602D'), textAlpha);
 	stroke(color('#EFA89B'), strokeAlpha);
+  //frameRate(25);
 	startingPoints = abrahamBlack.textToPoints(string, width/8, height/8*7, size, {"sampleFactor": fontSampleFactor});
     
 	for (let p = 0; p < startingPoints.length; p++) {
@@ -60,7 +62,7 @@ function setup() {
   
   noCursor();
    physics=new VerletPhysics2D();
-  physics.addBehavior(new GravityBehavior(new Vec2D(0,0.8)));
+  physics.addBehavior(new GravityBehavior(new Vec2D(0, gravStr)));
 
   // Set the world's bounding box (particles can't leave this box)
   physics.setWorldBounds(new Rect(0,0,width,height));
@@ -116,7 +118,7 @@ function setup() {
 function draw() {
     
   
-    end = createVector(mouseX, mouseY);
+    
     
 	background(backgroundColor);
     stroke(239,168,155,255);
@@ -125,8 +127,10 @@ function draw() {
       
   physics.update();
   noFill();
+  smooth();
 	for (let pt = 0; pt < points.length; pt++) {
         let p = points[pt];
+        end = createVector(mouseX + random(-mouseRnd,mouseRnd), mouseY + random(-mouseRnd,mouseRnd));
         start = createVector(p.x, p.y);
       // cloth_width = start.dist(end);
       // x_spacing = cloth_width/cloth_particles_wide;
@@ -140,16 +144,16 @@ function draw() {
     for(var j = 0; j < points.length; j++){
       if(i>0){
         // then make a spring connecting this particle (i,j) to the particle to its left (i-1,j)
-        smooth();
+        
         line(particles[i][j].x,particles[i][j].y,particles[i-1][j].x,particles[i-1][j].y);
       }
     }
   }
   push();
-	noFill();
-      //fill(36,96,45, 255);
+	    //noFill();
+      fill(36,96,45, 255);
       stroke('#EFA89B');
-      strokeWeight(6);
+      strokeWeight(2);
 	  text("Future Fit #3",  width/8, height/8*7);
     pop();
     

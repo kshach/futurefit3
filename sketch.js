@@ -2,16 +2,12 @@
 
 const string = "Future Fit #3"; //words to be displayed
 const size = 92; //font size
-const fontFile = "Muli-Black.ttf";
 const showText = true; //whether or not to have an overlay of the original text (in the background color)
 const textAlpha = 255; //the alpha of the text if displayed (low value will make it slowly fade in)
-//const backgroundColor = color('#24602D'); //kinda self-explanatory
 const strokeAlpha = 20; //the alpha of the lines (lower numbers are more transparent)
 const strokeColor = '#EFA89B'; //the line color
 
-
 const fontSampleFactor = 0.03; //How many points there are: the higher the number, the closer together they are (more detail)
-
 
 // These set how many particles wide and tall the cloth is:
 var cloth_particles_wide = 20;
@@ -24,7 +20,6 @@ var cloth_height = 300;
 var stiffness = 1; //spring stiffness
 //***********************************************************
 
-
 var physics; 
 var particles = []; // this will become a 2D array that will store all the particles
 
@@ -36,19 +31,12 @@ var i0 = cloth_particles_wide-1;
 var j0 = cloth_particles_tall-1;
 
 
-  
-
-
-  
-
 
 let start;
 let end;
 
-
 var points = [];
 var startingPoints;
-
 
 let abrahamReg;
 let abrahamBlack;
@@ -58,8 +46,6 @@ function preload() {
 }
 
 function setup() {
-   
-  //angleMode(DEGREES);
   createCanvas(0.8*windowHeight, windowHeight);
     x_spacing = windowHeight/4*3/cloth_particles_wide;
     backgroundColor = color('#24602D');

@@ -40,10 +40,20 @@ var startingPoints;
 
 let abrahamReg;
 let abrahamBlack;
+
+let intro = document.getElementById('introContainer');
+var positionInfo = intro.getBoundingClientRect();
+var introheight = positionInfo.height;
+console.log('elment height is: '+introheight);
+var introwidth = positionInfo.width;
+console.log('elment width is: '+introwidth);
+
 function preload() {
   abrahamReg = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/77f87b14759547a81c2ac71d8843805ed3696332/Fonts/AbrahamTRIAL-Regular.otf');
   abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
 }
+
+
 
 // const capturer = new CCapture({
 //   framerate: 60,
@@ -54,7 +64,8 @@ function preload() {
 // });
 
 function setup() {
-  cnv = createCanvas(0.8*windowHeight, windowHeight);
+  var myCanvas = createCanvas(introwidth, introheight);
+  myCanvas.parent('introContainer');
   x_spacing = windowHeight/4*3/cloth_particles_wide;
   backgroundColor = color('#251818');
 	background(backgroundColor);

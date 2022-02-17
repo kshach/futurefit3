@@ -16,7 +16,7 @@ var cloth_width = 300;
 var cloth_height = 300;
 
 var stiffness = 1; //spring stiffness
-var gravStr = 6;
+var gravStr = 2;
 //***********************************************************
 
 var physics; 
@@ -35,6 +35,7 @@ let start;
 let end;
 
 var points = [];
+var mouseExtra = [];
 var startingPoints;
 
 let abrahamReg;
@@ -44,20 +45,29 @@ function preload() {
   abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
 }
 
+// const capturer = new CCapture({
+//   framerate: 60,
+//   format: "png",
+//   name: "movie",
+//   quality: 100,
+//   verbose: true,
+// });
+
 function setup() {
-  createCanvas(0.8*windowHeight, windowHeight);
-    x_spacing = windowHeight/4*3/cloth_particles_wide;
-    backgroundColor = color('#24602D');
+  cnv = createCanvas(0.8*windowHeight, windowHeight);
+  x_spacing = windowHeight/4*3/cloth_particles_wide;
+  backgroundColor = color('#251818');
 	background(backgroundColor);
 	textFont(abrahamBlack);
 	textSize(size);
-	fill(color('#24602D'), textAlpha);
-	stroke(color('#EFA89B'), strokeAlpha);
+	fill(color('#94EE2D'), textAlpha);
+	stroke(color('#94EE2D'), strokeAlpha);
   //frameRate(25);
 	startingPoints = abrahamBlack.textToPoints(string, width/8, height/8*7, size, {"sampleFactor": fontSampleFactor});
     
 	for (let p = 0; p < startingPoints.length; p++) {
 		points[p] = startingPoints[p];
+    mouseExtra[p] = createVector(0,0);
 	}
   
   noCursor();
@@ -94,35 +104,18 @@ function setup() {
         // then make a spring connecting this particle (i,j) to the particle to its left (i-1,j)
         physics.addSpring(new VerletSpring2D(particles[i][j],particles[i-1][j],x_spacing,stiffness));
       }
-
-      // if((i==0 || i==i0) && j>0){
-      //   // also make a spring connecting this particle (i,j) to the particle above it (i,j-1)
-      //   physics.addSpring(new VerletSpring2D(particles[i][j],particles[i][j-1],y_spacing,stiffness));
-      // }
-
-
-//       if(i>0 && j>0 && i<i0 && j<points.length){
-//         physics.addSpring(new VerletSpring2D(particles[i][j],particles[i-1][j],1.4*y_spacing,stiffness));
-//         physics.addSpring(new VerletSpring2D(particles[i][j],particles[i+1][j],1.4*y_spacing,stiffness));
-//       }
-
     }
-    
   }
-
-
-  
-
 }
 
 function draw() {
-    
-  
-    
-    
-	background(backgroundColor);
-    stroke(239,168,155,255);
+
+
+background(backgroundColor);
+    stroke(color('#94EE2D'));
 	strokeWeight(1);
+
+ // if (frameCount === 1) capturer.start();
     
       
   physics.update();
@@ -130,7 +123,13 @@ function draw() {
   smooth();
 	for (let pt = 0; pt < points.length; pt++) {
         let p = points[pt];
-        end = createVector(mouseX + random(-mouseRnd,mouseRnd), mouseY + random(-mouseRnd,mouseRnd));
+        if(frameCount % 5===0)
+        {
+          console.log("switching it up");
+          mouseExtra[pt] = createVector(random(-mouseRnd,mouseRnd), random(-mouseRnd,mouseRnd));
+        } 
+        //end = createVector(mouseX + mouseExtra[pt].x, mouseY + mouseExtra[pt].y);
+        end = createVector(width/10*9+sin(frameCount/20)*50 + mouseExtra[pt].x, height/10*4 + mouseExtra[pt].y);
         start = createVector(p.x, p.y);
       // cloth_width = start.dist(end);
       // x_spacing = cloth_width/cloth_particles_wide;
@@ -151,10 +150,19 @@ function draw() {
   }
   push();
 	    //noFill();
-      fill(36,96,45, 255);
-      stroke('#EFA89B');
-      strokeWeight(2);
+      fill(color('#94EE2D'));
+      noStroke();
+      //stroke('#EFA89B');
+      //strokeWeight(2);
 	  text("Future Fit #3",  width/8, height/8*7);
     pop();
-    
+
+   // capturer.capture(cnv.canvas);
 }
+
+function mousePressed() {
+    noLoop();
+    capturer.stop();
+    capturer.save();
+}
+

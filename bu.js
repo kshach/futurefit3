@@ -1,3 +1,4 @@
+
 const string = "Future Fit #3"; //words to be displayed
 const size = 92; //font size
 const showText = true; //whether or not to have an overlay of the original text (in the background color)
@@ -16,7 +17,7 @@ var cloth_width = 300;
 var cloth_height = 300;
 
 var stiffness = 1; //spring stiffness
-var gravStr = 2;
+var gravStr = 0.5;
 //***********************************************************
 
 var physics; 
@@ -35,7 +36,6 @@ let start;
 let end;
 
 var points = [];
-var mouseExtra = [];
 var startingPoints;
 
 let abrahamReg;
@@ -53,32 +53,21 @@ function preload() {
   abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
 }
 
-
-
-// const capturer = new CCapture({
-//   framerate: 60,
-//   format: "png",
-//   name: "movie",
-//   quality: 100,
-//   verbose: true,
-// });
-
 function setup() {
   var myCanvas = createCanvas(introwidth, introheight);
   myCanvas.parent('introContainer');
-  x_spacing = windowHeight/4*3/cloth_particles_wide;
-  backgroundColor = color('#251818');
+    x_spacing = windowHeight/4*3/cloth_particles_wide;
+    backgroundColor = color('#24602D');
 	background(backgroundColor);
 	textFont(abrahamBlack);
 	textSize(size);
-	fill(color('#94EE2D'), textAlpha);
-	stroke(color('#94EE2D'), strokeAlpha);
+	fill(color('#24602D'), textAlpha);
+	stroke(color('#EFA89B'), strokeAlpha);
   //frameRate(25);
 	startingPoints = abrahamBlack.textToPoints(string, width/8, height/8*7, size, {"sampleFactor": fontSampleFactor});
     
 	for (let p = 0; p < startingPoints.length; p++) {
 		points[p] = startingPoints[p];
-    mouseExtra[p] = createVector(0,0);
 	}
   
   noCursor();
@@ -116,17 +105,22 @@ function setup() {
         physics.addSpring(new VerletSpring2D(particles[i][j],particles[i-1][j],x_spacing,stiffness));
       }
     }
+    
   }
+
+
+  
+
 }
 
 function draw() {
-
-
-background(backgroundColor);
-    stroke(color('#94EE2D'));
+    
+  
+    
+    
+	background(backgroundColor);
+    stroke(239,168,155,255);
 	strokeWeight(1);
-
- // if (frameCount === 1) capturer.start();
     
       
   physics.update();
@@ -134,13 +128,7 @@ background(backgroundColor);
   smooth();
 	for (let pt = 0; pt < points.length; pt++) {
         let p = points[pt];
-        if(frameCount % 5===0)
-        {
-          console.log("switching it up");
-          mouseExtra[pt] = createVector(random(-mouseRnd,mouseRnd), random(-mouseRnd,mouseRnd));
-        } 
-        end = createVector(mouseX + mouseExtra[pt].x, mouseY + mouseExtra[pt].y);
-        // end = createVector(width/10*9+sin(frameCount/20)*50 + mouseExtra[pt].x, height/10*4 + mouseExtra[pt].y);
+        end = createVector(mouseX + random(-mouseRnd,mouseRnd), mouseY + random(-mouseRnd,mouseRnd));
         start = createVector(p.x, p.y);
       // cloth_width = start.dist(end);
       // x_spacing = cloth_width/cloth_particles_wide;
@@ -161,19 +149,10 @@ background(backgroundColor);
   }
   push();
 	    //noFill();
-      fill(color('#94EE2D'));
-      noStroke();
-      //stroke('#EFA89B');
-      //strokeWeight(2);
+      fill(36,96,45, 255);
+      stroke('#EFA89B');
+      strokeWeight(2);
 	  text("Future Fit #3",  width/8, height/8*7);
     pop();
-
-   // capturer.capture(cnv.canvas);
+    
 }
-
-// function mousePressed() {
-//     noLoop();
-//     capturer.stop();
-//     capturer.save();
-// }
-

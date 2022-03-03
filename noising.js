@@ -15,9 +15,17 @@ let t = 0;
 let inter = 0.01;
 
 
+let img2 = document.getElementById('eteximg');
+var positionInfoetex = img2.getBoundingClientRect();
+var introheightetex = positionInfoetex.height;
+console.log('elment height is: '+introheight);
+var introwidthetex = positionInfoetex.width;
+console.log('elment width is: '+introwidth);
+
 function setup() {
   margin = width/2;
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  var myCanvas = createCanvas(introwidth, introheight, WEBGL);
+  myCanvas.parent('eteximg');
   xjump = (width-margin*2) / theOne;
   yjump = (height-margin*2) / theOne;
   strokeWeight(1);

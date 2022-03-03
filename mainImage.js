@@ -1,5 +1,5 @@
 const string = "Future Fit #3"; //words to be displayed
-const size = 92; //font size
+const sizer = 92; //font size
 const showText = true; //whether or not to have an overlay of the original text (in the background color)
 const textAlpha = 255; //the alpha of the text if displayed (low value will make it slowly fade in)
 const strokeAlpha = 20; //the alpha of the lines (lower numbers are more transparent)
@@ -70,11 +70,11 @@ function setup() {
   backgroundColor = color('#251818');
 	background(backgroundColor);
 	textFont(abrahamBlack);
-	textSize(size);
+	textSize(sizer);
 	fill(color('#94EE2D'), textAlpha);
 	stroke(color('#94EE2D'), strokeAlpha);
   //frameRate(25);
-	startingPoints = abrahamBlack.textToPoints(string, width/8, height/8*7, size, {"sampleFactor": fontSampleFactor});
+	startingPoints = abrahamBlack.textToPoints(string, width/8, height/8*7, sizer, {"sampleFactor": fontSampleFactor});
     
 	for (let p = 0; p < startingPoints.length; p++) {
 		points[p] = startingPoints[p];

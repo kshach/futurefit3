@@ -10,9 +10,18 @@ let rotdivivder;
 let facingRot;
 let m = true;
 
+let scanimgs = document.getElementById('scanimg');
+var positionInfoscan = scanimgs.getBoundingClientRect();
+var scanheight = positionInfoscan.height;
+console.log('elment height is: '+scanheight);
+var scanwidth = positionInfoscan.width;
+console.log('elment width is: '+scanwidth);
+
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  var scanCanvas = createCanvas(scanwidth, scanheight, WEBGL);
+  scanCanvas.parent('scanimg');
+  
   angleMode(DEGREES);
   rotdivider = 360/howmany;
   facingRot = 90/howmany;

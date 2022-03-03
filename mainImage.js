@@ -41,7 +41,7 @@ var startingPoints;
 let abrahamReg;
 let abrahamBlack;
 
-let intro = document.getElementById('introContainer');
+let item = document.getElementById('image1');
 var positionInfo = intro.getBoundingClientRect();
 var introheight = positionInfo.height;
 console.log('elment height is: '+introheight);

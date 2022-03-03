@@ -5,8 +5,16 @@ const ellipseSize = 8;
 var physics; 
 var particles = []; 
 
+let iotimgg = document.getElementById('iotimg');
+var positionInfoiot = iotimgg.getBoundingClientRect();
+var iotheight = positionInfo.height;
+console.log('elment height is: '+iotheight);
+var iotwidth = positionInfo.width;
+console.log('elment width is: '+iotwidth);
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  var myCanvas = createCanvas(iotwidth, iotheight);
+  myCanvas.parent('introContainer');
   physics=new VerletPhysics2D();
   physics.setDrag(0.08);
   physics.addBehavior(new GravityBehavior(new Vec2D(0,0.05)));

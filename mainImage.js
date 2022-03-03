@@ -42,10 +42,10 @@ let abrahamReg;
 let abrahamBlack;
 
 let item = document.getElementById('image1');
-var positionInfo = intro.getBoundingClientRect();
-var introheight = positionInfo.height;
+var positionInfo = item.getBoundingClientRect();
+var imageheight = positionInfo.height;
 console.log('elment height is: '+introheight);
-var introwidth = positionInfo.width;
+var imagewidth = positionInfo.width;
 console.log('elment width is: '+introwidth);
 
 function preload() {
@@ -64,8 +64,8 @@ function preload() {
 // });
 
 function setup() {
-  var myCanvas = createCanvas(introwidth, introheight);
-  myCanvas.parent('introContainer');
+  var myCanvas = createCanvas(imagewidth, imageheight);
+  myCanvas.parent('image1');
   x_spacing = windowHeight/4*3/cloth_particles_wide;
   backgroundColor = color('#251818');
 	background(backgroundColor);

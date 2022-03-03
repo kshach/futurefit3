@@ -7,8 +7,18 @@ const green = '#94EE2D';
 
 let mousePos;
 
+
+
+let tdImg = document.getElementById('touchDimg');
+var tDpositionInfo = tdImg.getBoundingClientRect();
+var tdheight = tDpositionInfo.height;
+console.log('elment height is: '+tdheight);
+var tdwidth = tDpositionInfo.width;
+console.log('elment width is: '+tdwidth);
+
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+ var wormholeCanvas = createCanvas(tdwidth, tdheight, WEBGL);
+  wormholeCanvas.parent('touchDimg');
   angleMode(DEGREES);
 }
 

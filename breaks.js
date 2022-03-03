@@ -8,6 +8,13 @@ let rnd1;
 let rnd2;
 let rnd3;
 
+let breaks = document.getElementById('breaksimg');
+var positionInfobreaks = breaks.getBoundingClientRect();
+var breaksheight = positionInfobreaks.height;
+console.log('elment height is: '+breaksheight);
+var breakswidth = positionInfobreaks.width;
+console.log('elment width is: '+breakswidth);
+
 function preload() {
   for(let i = 0; i < 20; i++){
     breaks[i] = loadModel('https://cdn.rawgit.com/kshach/futurefit3/main/objs/break'+(i+1)+'.obj');
@@ -18,7 +25,8 @@ function preload() {
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  var myCanvas = createCanvas(breakswidth, breaksheight, WEBGL);
+  myCanvas.parent('breaksimg');
   angleMode(DEGREES);
   rnd1 = random(-5,5);
   rnd2 = random(-5,5);

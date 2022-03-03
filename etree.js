@@ -13,10 +13,16 @@ let splitCounter = 0;
 let expecLines;
 let check = false;
 
-
+let emoimg = document.getElementById('emotionimg');
+var positionInfoemo = emoimg.getBoundingClientRect();
+var emoheight = positionInfo.height;
+console.log('elment height is: '+emoheight);
+var emowidth = positionInfo.width;
+console.log('elment width is: '+emowidth);
 
 function setup(){
-  createCanvas( windowWidth, windowHeight);
+  var myCanvas = createCanvas(emowidth, emoheight);
+  myCanvas.parent('emotionimg');
 //   expecLines = pow(2, split);
   background(240);
   splitGoalVectors[0] = [];

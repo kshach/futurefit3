@@ -1,5 +1,5 @@
 let num_particles;
-const stiffness = 0.01;
+const stiff = 0.01;
 const ellipseSize = 8;
 
 var physics; 
@@ -35,7 +35,7 @@ function setup() {
       physics.addParticle(particles[i][j]);
       physics.addBehavior(new   AttractionBehavior(particles[i][j], height/8, -0.8, 0.5));
     }
-    physics.addSpring(new VerletSpring2D(particles[i][0],particles[i][1],height/5, stiffness));
+    physics.addSpring(new VerletSpring2D(particles[i][0],particles[i][1],height/5, stiff));
   }
 }
 

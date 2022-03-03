@@ -8,8 +8,8 @@ let rnd1;
 let rnd2;
 let rnd3;
 
-let breaks = document.getElementById('breaksimg');
-var positionInfobreaks = breaks.getBoundingClientRect();
+let breakss = document.getElementById('breaksimg');
+var positionInfobreaks = breakss.getBoundingClientRect();
 var breaksheight = positionInfobreaks.height;
 console.log('elment height is: '+breaksheight);
 var breakswidth = positionInfobreaks.width;

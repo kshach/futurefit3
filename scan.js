@@ -1,6 +1,3 @@
-const bg = '#251818';
-const green = '#94EE2D';
-
 const howmany = 12;
 let yspacing = 50;
 let minifier = 0.4;
@@ -31,11 +28,11 @@ function setup() {
 }
 
 function draw() {
-  background(color(bg));
+  background(color('#251818'));
   noFill();
   
   strokeWeight(1);
-  stroke(color(green));
+  stroke(color('#94EE2D'));
   yspacing = map(mouseY, 0, height, -50, 50);
   facingRot = map(mouseY, 0, height, 90, -90)/howmany;
   //orbitControl();

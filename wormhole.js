@@ -2,9 +2,6 @@ const wormHoleloops = 15;
 const loopDist = 10;
 const loopBaseSize = 50;
 
-const bg ='#251818';
-const green = '#94EE2D';
-
 let mousePos;
 
 
@@ -23,7 +20,7 @@ function setup() {
 }
 
 function draw() {
-  background(color(bg));
+  background(color('#251818'));
   //orbitControl();
   stroke(color('#94EE2D'));
   noFill();

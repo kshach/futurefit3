@@ -6,9 +6,17 @@ let kababs;
 const bgcol= '#251818';
 const greencol = '#94EE2D';
 const whiteCol = '#F0ECF4';
+
+let drawimg = document.getElementById('autodrawimg');
+var positionInfodraw = drawimg.getBoundingClientRect();
+var drawheight = positionInfodraw.height;
+console.log('elment height is: '+ drawheight);
+var drawwidth = positionInfodraw.width;
+console.log('elment width is: '+ drawwidth);
+
 function setup() {
-    
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    var myCanvas = createCanvas(drawwidth, drawheight, WEBGL);
+  myCanvas.parent('autodrawimg');
   background(color('#251818'));
     push();
     angleMode(RADIANS);

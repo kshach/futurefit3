@@ -127,7 +127,7 @@ function draw() {
         let p = points[pt];
         if(frameCount % 5===0)
         {
-          console.log("switching it up");
+          //console.log("switching it up");
           mouseExtra[pt] = createVector(random(-mouseRnd,mouseRnd), random(-mouseRnd,mouseRnd));
         } 
         end = createVector(mouseX + mouseExtra[pt].x, mouseY + mouseExtra[pt].y);

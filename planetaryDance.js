@@ -14,18 +14,18 @@ const maxLines = 200;
 let overwriteLines = 0;
 const frameToLine =2;
 
-let imageone = document.getElementById('image1');
-var positionInfo = imageone.getBoundingClientRect();
-var introheight = positionInfo.height;
+let imageone = document.getElementById('soundimg');
+var positionInfosound = imageone.getBoundingClientRect();
+var soundheight = positionInfosound.height;
 console.log('elment height is: '+introheight);
-var introwidth = positionInfo.width;
+var soundwidth = positionInfosound.width;
 console.log('elment width is: '+introwidth);
 
 
 
 function setup() {
-  var myCanvas = createCanvas(introwidth, introheight);
-  myCanvas.parent('image1');
+  var myCanvas = createCanvas(soundwidth, soundheight);
+  myCanvas.parent('soundimg');
   angleMode(DEGREES);
   translateByX = width /2;
   translateByY = height /2;

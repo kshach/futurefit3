@@ -9,9 +9,9 @@ let mousePos;
 let tdImg = document.getElementById('touchDimg');
 var tDpositionInfo = tdImg.getBoundingClientRect();
 var tdheight = tDpositionInfo.height;
-console.log('elment height is: '+tdheight);
+console.log('wormhole height is: '+tdheight);
 var tdwidth = tDpositionInfo.width;
-console.log('elment width is: '+tdwidth);
+console.log('wormhole width is: '+tdwidth);
 
 function setup() {
  var wormholeCanvas = createCanvas(tdwidth, tdheight, WEBGL);

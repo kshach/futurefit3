@@ -10,13 +10,13 @@ const whiteCol = '#F0ECF4';
 let drawimg = document.getElementById('autodrawimg');
 var positionInfodraw = drawimg.getBoundingClientRect();
 var drawheight = positionInfodraw.height;
-console.log('elment height is: '+ drawheight);
+console.log('draw height is: '+ drawheight);
 var drawwidth = positionInfodraw.width;
-console.log('elment width is: '+ drawwidth);
+console.log('draw width is: '+ drawwidth);
 
 function setup() {
-    var myCanvas = createCanvas(drawwidth, drawheight, WEBGL);
-  myCanvas.parent('autodrawimg');
+    var drawCanvas = createCanvas(drawwidth, drawheight, WEBGL);
+    drawCanvas.parent('autodrawimg');
   background(color('#251818'));
     push();
     angleMode(RADIANS);

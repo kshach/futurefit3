@@ -13,8 +13,8 @@ var iotwidth = positionInfo.width;
 console.log('elment width is: '+iotwidth);
 
 function setup() {
-  var myCanvas = createCanvas(iotwidth, iotheight);
-  myCanvas.parent('introContainer');
+  var fallingCanvas = createCanvas(iotwidth, iotheight);
+  fallingCanvas.parent('introContainer');
   physics=new VerletPhysics2D();
   physics.setDrag(0.08);
   physics.addBehavior(new GravityBehavior(new Vec2D(0,0.05)));

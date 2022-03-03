@@ -25,8 +25,8 @@ function preload() {
 
 
 function setup() {
-  var myCanvas = createCanvas(breakswidth, breaksheight, WEBGL);
-  myCanvas.parent('breaksimg');
+  var breaksCanvas = createCanvas(breakswidth, breaksheight, WEBGL);
+  breaksCanvas.parent('breaksimg');
   angleMode(DEGREES);
   rnd1 = random(-5,5);
   rnd2 = random(-5,5);
@@ -39,13 +39,7 @@ function setup() {
 function draw() {
   background(color('#251818'));
   rotateY(-frameCount/2);
-  //rotateY(180);
-  // for(let i = 0; i<breaks.length; i++){
-  //   push();
-  //   fill(255/breaks.length*i)
-  //     model(breaks[i]);
-  //   pop();
-  // }
+  scale(map(mouseY,0,height,1.1,1),map(mouseY,0,height,1.25,1),map(mouseY,0,height,1.1,1));
   if(mouseX<=100) model(unbroken);
   else if(mouseX>100) brokenUpdate();
   

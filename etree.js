@@ -21,8 +21,8 @@ var emowidth = positionInfo.width;
 console.log('elment width is: '+emowidth);
 
 function setup(){
-  var myCanvas = createCanvas(emowidth, emoheight);
-  myCanvas.parent('emotionimg');
+  var etreeCanvas = createCanvas(emowidth, emoheight);
+  etreeCanvas.parent('emotionimg');
 //   expecLines = pow(2, split);
   background(240);
   splitGoalVectors[0] = [];

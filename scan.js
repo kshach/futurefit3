@@ -10,9 +10,9 @@ let m = true;
 let scanimgs = document.getElementById('scanimg');
 var positionInfoscan = scanimgs.getBoundingClientRect();
 var scanheight = positionInfoscan.height;
-console.log('elment height is: '+scanheight);
+console.log('scan height is: '+scanheight);
 var scanwidth = positionInfoscan.width;
-console.log('elment width is: '+scanwidth);
+console.log('scan width is: '+scanwidth);
 
 
 function setup() {

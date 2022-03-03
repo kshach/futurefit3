@@ -44,28 +44,19 @@ let abrahamBlack;
 let intro = document.getElementById('introContainer');
 var positionInfo = intro.getBoundingClientRect();
 var introheight = positionInfo.height;
-console.log('elment height is: '+introheight);
+console.log('intro height is: ' + introheight);
 var introwidth = positionInfo.width;
-console.log('elment width is: '+introwidth);
+console.log('intro width is: ' + introwidth);
 
 function preload() {
-  abrahamReg = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/77f87b14759547a81c2ac71d8843805ed3696332/Fonts/AbrahamTRIAL-Regular.otf');
-  abrahamBlack = loadFont('https://cdn.statically.io/gh/kshach/futurefit5/f040c02eecbed106645d15421f731d4150b7a2c3/Fonts/AbrahamTRIAL-Black.otf');
+  abrahamReg = loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Regular.otf');
+  abrahamBlack = loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Black.otf');
 }
 
 
-
-// const capturer = new CCapture({
-//   framerate: 60,
-//   format: "png",
-//   name: "movie",
-//   quality: 100,
-//   verbose: true,
-// });
-
 function setup() {
-  var myCanvas = createCanvas(introwidth, introheight);
-  myCanvas.parent('introContainer');
+  var introCanvas = createCanvas(introwidth, introheight);
+  introCanvas.parent('introContainer');
   x_spacing = windowHeight/4*3/cloth_particles_wide;
   backgroundColor = color('#251818');
 	background(backgroundColor);

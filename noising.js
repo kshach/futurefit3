@@ -5,10 +5,6 @@ const noiseScale = 15;
 let rotExp = 5;
 let margin;
 
-//colors
-const bg = '#251818';
-const green = '#94EE2D'
-
 let xjump;
 let yjump;
 let t = 0;
@@ -24,12 +20,12 @@ console.log('elment width is: '+introwidth);
 
 function setup() {
   margin = width/2;
-  var myCanvas = createCanvas(introwidth, introheight, WEBGL);
-  myCanvas.parent('eteximg');
+  var noisingCanvas = createCanvas(introwidth, introheight, WEBGL);
+  noisingCanvas.parent('eteximg');
   xjump = (width-margin*2) / theOne;
   yjump = (height-margin*2) / theOne;
   strokeWeight(1);
-  stroke(color(green));
+  stroke(color('#94EE2D'));
 }
 
 function draw() {
@@ -40,7 +36,7 @@ function draw() {
   rotateX(mouseY/100);
   }
   //let rotExp = sin(frameCount/1000000)
-  background(color(bg));
+  background(color('#251818'));
   noFill();
   orbitControl();
   //scale(0.5,1,1);

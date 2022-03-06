@@ -1,4 +1,5 @@
-var mainImageSketch = function( p ) {
+//main image
+var mainImageSketch = function( mainImageSketch ) {
     const stringy = "Future Fit #3"; //words to be displayed
     const sizer = 92; //font size
     const showText = true; //whether or not to have an overlay of the original text (in the background color)
@@ -49,28 +50,28 @@ var mainImageSketch = function( p ) {
     var introwidth = positionInfo.width;
     console.log('intro width is: ' + introwidth);
 
-    p.preload = function(){
-        abrahamReg = p.loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Regular.otf');
-        abrahamBlack = p.loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Black.otf');
+    mainImageSketch.preload = function(){
+        abrahamReg = mainImageSketch.loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Regular.otf');
+        abrahamBlack = mainImageSketch.loadFont('https://cdn.rawgit.com/kshach/futurefit3/main/Fonts/AbrahamTRIAL-Black.otf');
       };
 
-    p.setup = function() {
+    mainImageSketch.setup = function() {
         // var introCanvas = createCanvas(introwidth, introheight);
         // introCanvas.parent('introContainer');
-        p.createCanvas(introwidth, introheight);
-        x_spacing = p.windowHeight/4*3/cloth_particles_wide;
-        backgroundColor = p.color('#251818');
-          p.background(backgroundColor);
-          p.textFont(abrahamBlack);
-          p.textSize(sizer);
-          p.fill(p.color('#94EE2D'), textAlpha);
-          p.stroke(p.color('#94EE2D'), strokeAlpha);
+        mainImageSketch.createCanvas(introwidth, introheight);
+        x_spacing = mainImageSketch.windowHeight/4*3/cloth_particles_wide;
+        backgroundColor = mainImageSketch.color('#251818');
+          mainImageSketch.background(backgroundColor);
+          mainImageSketch.textFont(abrahamBlack);
+          mainImageSketch.textSize(sizer);
+          mainImageSketch.fill(mainImageSketch.color('#94EE2D'), textAlpha);
+          mainImageSketch.stroke(mainImageSketch.color('#94EE2D'), strokeAlpha);
         //frameRate(25);
-          startingPoints = abrahamBlack.textToPoints(stringy, p.width/8, p.height/8*7, sizer, {"sampleFactor": fontSampleFactor});
+          startingPoints = abrahamBlack.textToPoints(stringy, mainImageSketch.width/8, mainImageSketch.height/8*7, sizer, {"sampleFactor": fontSampleFactor});
           
           for (let pt = 0; pt < startingPoints.length; pt++) {
               points[pt] = startingPoints[pt];
-          mouseExtra[pt] = p.createVector(0,0);
+          mouseExtra[pt] = mainImageSketch.createVector(0,0);
           }
         
         //noCursor();
@@ -78,7 +79,7 @@ var mainImageSketch = function( p ) {
         physics.addBehavior(new GravityBehavior(new Vec2D(0, gravStr)));
       
         // Set the world's bounding box (particles can't leave this box)
-        physics.setWorldBounds(new Rect(0,0,p.width,p.height));
+        physics.setWorldBounds(new Rect(0,0,mainImageSketch.width,mainImageSketch.height));
       
         for(var i = 0; i<cloth_particles_wide; i++){
       
@@ -108,22 +109,22 @@ var mainImageSketch = function( p ) {
         }
       };
   
-    p.draw = function() {
-        p.background(backgroundColor);
-        p.stroke(p.color('#94EE2D'));
-         p.strokeWeight(1);
+    mainImageSketch.draw = function() {
+        mainImageSketch.background(backgroundColor);
+        mainImageSketch.stroke(mainImageSketch.color('#94EE2D'));
+         mainImageSketch.strokeWeight(1);
         physics.update();
-        p.noFill();
-        p.smooth();
+        mainImageSketch.noFill();
+        mainImageSketch.smooth();
           for (let pt = 0; pt < points.length; pt++) {
               let pz = points[pt];
-              if(p.frameCount % 5===0)
+              if(mainImageSketch.frameCount % 5===0)
               {
                 //console.log("switching it up");
-                mouseExtra[pt] = p.createVector(p.random(-mouseRnd,mouseRnd), p.random(-mouseRnd,mouseRnd));
+                mouseExtra[pt] = mainImageSketch.createVector(mainImageSketch.random(-mouseRnd,mouseRnd), mainImageSketch.random(-mouseRnd,mouseRnd));
               } 
-              end = p.createVector(p.mouseX + mouseExtra[pt].x, p.mouseY + mouseExtra[pt].y);
-              start = p.createVector(pz.x, pz.y);
+              end = mainImageSketch.createVector(mainImageSketch.mouseX + mouseExtra[pt].x, mainImageSketch.mouseY + mouseExtra[pt].y);
+              start = mainImageSketch.createVector(pz.x, pz.y);
             particles[cloth_particles_wide-1][pt].lock();
             particles[cloth_particles_wide-1][pt].x=end.x;
             particles[cloth_particles_wide-1][pt].y=end.y;
@@ -133,18 +134,122 @@ var mainImageSketch = function( p ) {
         for(var i = 0; i < cloth_particles_wide; i++){
           for(var j = 0; j < points.length; j++){
             if(i>0){
-              p.line(particles[i][j].x,particles[i][j].y,particles[i-1][j].x,particles[i-1][j].y);
+              mainImageSketch.line(particles[i][j].x,particles[i][j].y,particles[i-1][j].x,particles[i-1][j].y);
             }
           }
         }
-        p.push();
-            p.fill(p.color('#94EE2D'));
-            p.noStroke();
-            p.text(stringy,  p.width/8, p.height/8*7);
-          p.pop();
+        mainImageSketch.push();
+            mainImageSketch.fill(mainImageSketch.color('#94EE2D'));
+            mainImageSketch.noStroke();
+            mainImageSketch.text(stringy,  mainImageSketch.width/8, mainImageSketch.height/8*7);
+          mainImageSketch.pop();
       };
   };
-  var p5sk;
-window.onload = () => {
-  p5sk = new p5(mainImageSketch, document.getElementById('introContainer'));
-};
+//   var p5sk;
+// window.onload = () => {
+  new p5(mainImageSketch, document.getElementById('introContainer'));
+//sound img
+var soundImgSketch = function( soundsketch ) {
+    //colors
+    let bg = '#251818';
+    let g = '#94EE2D';
+
+    //init basics
+    let translateByX;
+    let translateByY;
+    let earthPos;
+    let jupPos;
+
+    //lines
+    let lines = [];
+    const maxLines = 200;
+    let overwriteLines = 0;
+    const frameToLine =2;
+
+    let soundimgg = document.getElementById('soundimg');
+    var positionInfosound = soundimgg.getBoundingClientRect();
+    var soundheight = positionInfosound.height;
+    console.log('sound height is: '+soundheight);
+    var soundwidth = positionInfosound.width;
+    console.log('sound width is: '+soundheight);
+
+
+
+    soundsketch.setup = function() {
+      soundsketch.createCanvas(soundwidth, soundheight);
+      soundsketch.angleMode(soundsketch.DEGREES);
+      translateByX = soundsketch.width /2;
+      translateByY = soundsketch.height /2;
+    }
+
+
+
+    soundsketch.draw = function() {
+      soundsketch.background(soundsketch.color(bg));
+      
+      
+      soundsketch.fill(soundsketch.color(bg));
+      soundsketch.stroke(soundsketch.color(g));
+      //check if reached frameNum;
+      if(soundsketch.frameCount%frameToLine===0)
+        {
+          if(lines.length<maxLines)
+            {
+              lines.push({
+              ex: earthPos.x+translateByX,
+              ey: earthPos.y+translateByY,
+              jx: jupPos.x+translateByX,
+              jy: jupPos.y+translateByY
+              });    
+            }
+          else
+            {
+              lines[overwriteLines] =
+              {
+              ex: earthPos.x+translateByX,
+              ey: earthPos.y+translateByY,
+              jx: jupPos.x+translateByX,
+              jy: jupPos.y+translateByY
+              };
+              overwriteLines++;
+              if (overwriteLines>=maxLines)
+                {
+                  overwriteLines=0;
+                }
+            }
+          
+        }
+      for(i=0; i < lines.length; i++)
+      {
+        soundsketch.line(lines[i].ex, lines[i].ey,lines[i].jx,lines[i].jy);
+      }
+      //earth
+      soundsketch.push();
+      soundsketch.translate(translateByX, translateByY);
+      earthPos = soundsketch.createVector(0,0);
+      earthPos.set(50,50).rotate(soundsketch.frameCount*8);
+      soundsketch.ellipse(earthPos.x,earthPos.y, 10, 10);
+      soundsketch.pop();
+      
+      //jupiter
+      soundsketch.push();
+      soundsketch.translate(translateByX, translateByY);
+      jupPos = soundsketch.createVector(0,0);
+      jupPos.set(soundsketch.abs(soundsketch.winMouseX -soundsketch.width/2), soundsketch.abs(soundsketch.winMouseX -soundsketch.width/2)).rotate(soundsketch.frameCount);
+      soundsketch.ellipse(jupPos.x,jupPos.y, 20, 20);
+      soundsketch.pop();
+      soundsketch.ellipse(soundsketch.width/2,soundsketch.height/2,100,100);
+    }
+
+
+    soundsketch.mousePressed = function() {
+      overwriteLines = 0;
+      lines = [];
+  }
+}
+new p5(soundImgSketch, document.getElementById('soundimg'));
+
+var soundImgSketch = function( p ) {
+
+}
+new p5(soundImgSketch, document.getElementById('soundimg'));

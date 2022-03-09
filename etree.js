@@ -1,4 +1,3 @@
-const golden = 1.61803399;
 let goalRange;
 const fr = 60;
 
@@ -7,37 +6,27 @@ let interStep;
 let amount = 0;
 let split = 5;
 let splitGoalVectors = [];
-let lineCounter = 0;
 let lineSplitCounter = 0;
 let splitCounter = 0;
-let expecLines;
-let check = false;
 
-let emoimg = document.getElementById('emotionimg');
-var positionInfoemo = emoimg.getBoundingClientRect();
-var emoheight = positionInfo.height;
-console.log('elment height is: '+emoheight);
-var emowidth = positionInfo.width;
-console.log('elment width is: '+emowidth);
+
 
 function setup(){
-  var etreeCanvas = createCanvas(emowidth, emoheight);
-  etreeCanvas.parent('emotionimg');
-//   expecLines = pow(2, split);
+  createCanvas( windowWidth, windowHeight);
   background(240);
   splitGoalVectors[0] = [];
   splitGoalVectors[0][0] = createVector(0, height / 2);
   calculateSplitGoals(width/2, height/2);
   interStep= step;
   goalRange = width/height*35;
-  console.log("goal range is: "+goalRange);
+  stroke(color('#94EE2D'));
+  background(color('#251818'));
 }
 
 function draw() {
-  //background(240);
   if(frameCount%(fr)==0)
     {
-      updatePos();
+      updatePos();f
     }
   // drawing and lerping
 	if(amount<1&&splitCounter < split){
@@ -48,7 +37,7 @@ function draw() {
         for(j = i*2;  j < i*2+2; j++){
           let l = p5.Vector.lerp(splitGoalVectors[splitCounter][i], splitGoalVectors[splitCounter+1][j], amount);
           line(splitGoalVectors[splitCounter][i].x, splitGoalVectors[splitCounter][i].y, l.x,l.y);	
-          ellipse(splitGoalVectors[splitCounter][i].x, splitGoalVectors[splitCounter][i].y, 10,10);	
+          	
 	  }
     }
 	}else if (splitCounter < split) {
@@ -56,30 +45,16 @@ function draw() {
 	splitCounter++;
       interStep -= step/split;
 	}
-	// keep drawn lines after they're done
-	// for(let sp = 0; sp < splitCounter; sp++){
-	// for(let i = 0; i < splitGoalVectors[sp-1].length; i++){
-	// for (let j = i*2; j < i*2+2; j++){
-	// line(splitGoalVectors[sp][i].x, splitGoalVectors[sp][i].y, splitGoalVectors[sp+1][j].x, splitGoalVectors[sp+1][j].y);
-	// }
-	// }
-	// }
-}
-
-function mousePressed(){
-  updatePos();
-  //console.log("goal split vector are: " + splitGoalVectors);
 }
 
 function updatePos()
 {  
   clear();
-  background(240);
+  background(color('#251818'));
   amount=0;
-  lineCounter = 0;
   interStep = step;
   splitCounter = 0;
-  calculateSplitGoals(mouseX, mouseY);
+  calculateSplitGoals(winMouseX, winMouseY);
 }
 
 //calculating splits and points
@@ -93,8 +68,7 @@ function calculateSplitGoals(goalX, goalY){
            (splitGoalVectors[i][0].x + goalX/split)+ random(-goalRange*i, goalRange*i),
           splitGoalVectors[i][i%2].y+yjump*i + random(-goalRange*i, goalRange*i)
           );
-	  //ellipse(splitGoalVectors[i+1][j].x, splitGoalVectors[i+1][j].y, 10,10);	
-      }
+}
         
     
   }

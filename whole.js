@@ -149,7 +149,7 @@ var mainImageSketch = function( mainImageSketch ) {
           mainImageSketch.pop();}
       };
   };
-  new p5(mainImageSketch, document.getElementById('introContainer'));
+  var mainp5 = new p5(mainImageSketch, document.getElementById('introContainer'));
 
   //sound img
 var soundImgSketch = function( soundsketch ) {
@@ -252,7 +252,7 @@ var soundImgSketch = function( soundsketch ) {
       lines = [];
   }
 }
-new p5(soundImgSketch, document.getElementById('soundimg'));
+var sndimgp5 = new p5(soundImgSketch, document.getElementById('soundimg'));
 
 //noising sketch etextile
 var noisingSketch = function( etexS ) {
@@ -316,7 +316,7 @@ var noisingSketch = function( etexS ) {
   
  }
 }
-new p5(noisingSketch, document.getElementById('eteximg'));
+var eteximgp5 = new p5(noisingSketch, document.getElementById('eteximg'));
 
 //iot falling attractors sketch
 var fallingAttractorsSketch = function( iotAttrct ) 
@@ -402,7 +402,7 @@ iotAttrct.mouseDragged = function(){
 iotAttrct.mouseReleased = function (){
   physics.removeBehavior(mouseAttractor);
 }}
-new p5(fallingAttractorsSketch, document.getElementById('iotimg'));
+var iotimgp5 = new p5(fallingAttractorsSketch, document.getElementById('iotimg'));
 
 //etree
 var etreeSketch = function( etreeskch ){
@@ -490,7 +490,7 @@ function calculateSplitGoals(goalX, goalY){
   }
 }
 }
-new p5(etreeSketch, document.getElementById('emotionimg'));
+var etreep5 = new p5(etreeSketch, document.getElementById('emotionimg'));
 
 
 //recraft ele
@@ -780,7 +780,7 @@ function brokenUpdate(){
   elesketch.pop();
   }
 }
-new p5(recraftEleSketch, document.getElementById('breaksimg'));
+var breaksp5 = new p5(recraftEleSketch, document.getElementById('breaksimg'));
 
 //auto draw
 var autodrawSketch = function( autosk ){
@@ -852,7 +852,7 @@ var autodrawSketch = function( autosk ){
   }
   
 }
-new p5(autodrawSketch, document.getElementById('autodrawimg'));
+var autodrawp5 = new p5(autodrawSketch, document.getElementById('autodrawimg'));
 
 //scan img
 var scanImgSketch = function( scnimage ){
@@ -916,7 +916,7 @@ var scanImgSketch = function( scnimage ){
     m = false;
     }}
   }
-  new p5(scanImgSketch, document.getElementById('scanimg'));
+  var scanp5 = new p5(scanImgSketch, document.getElementById('scanimg'));
 
 //td sketch
 var tdSketch = function(touchskch)
@@ -981,4 +981,4 @@ touchskch.draw = function() {
       }}
 }
 }
-new p5(tdSketch, document.getElementById('touchDimg'));
+var tdp5 = new p5(tdSketch, document.getElementById('touchDimg'));

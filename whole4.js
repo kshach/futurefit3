@@ -62,8 +62,7 @@ var mainImageSketch = function(mainImageSketch) {
       };
 
     mainImageSketch.setup = function() {
-        // var introCanvas = createCanvas(introwidth, introheight);
-        // introCanvas.parent('introContainer');
+        
 
         mainImageSketch.createCanvas(introwidth, introheight);
         mainImageSketch.frameRate(30);
@@ -220,7 +219,7 @@ soundsketch.setup = function() {
   soundsketch.background(soundsketch.color(bg));
   
   
-  soundsketch.fill(color(bg));
+  soundsketch.fill(soundsketch.color(bg));
   soundsketch.stroke(soundsketch.color(g));
   
   //check if reached frameNum;
@@ -316,7 +315,7 @@ var noisingSketch = function(etexS) {
     xjump = (etexS.width-margin*2) / theOne;
     yjump = (etexS.height-margin*2) / theOne;
     etexS.strokeWeight(1.5);
-    etexS.stroke(color(green));
+    etexS.stroke(etexS.color(green));
     etexS.ortho(-etexS.width / 2, etexS.width / 2, etexS.height / 2, -etexS.height / 2, 6000, -6000);
   }
   
@@ -330,7 +329,7 @@ var noisingSketch = function(etexS) {
     }
     etexS.scale(etexS.sin(etexS.frameCount / 60)*0.1+0.3,0.4,0.4);
     if(0<etexS.winMouseX<etexS.width&&0<winMouseY<etexS.height){
-      etexS.translate(etexS.winMouseX-width/2, etexS.winMouseY-etexS.height/2,-etexS.winMouseX-etexS.winMouseY);
+      etexS.translate(etexS.winMouseX-etexS.width/2, etexS.winMouseY-etexS.height/2,-etexS.winMouseX-etexS.winMouseY);
       etexS.rotateY(etexS.winMouseX/100);
       etexS.rotateX(etexS.winMouseX/etexS.height*10);
     }
@@ -385,9 +384,9 @@ iotAttrct.setup = function() {
     physics=new VerletPhysics2D();
     physics.setDrag(0.08);
     physics.addBehavior(new GravityBehavior(new Vec2D(0,0.05)));
-    num_particles = width/10;
+    num_particles = iotAttrct.width/10;
     // Set the world's bounding box (particles can't leave this box)
-    physics.setWorldBounds(new Rect(0,-0.5*height,width,height*2+20));
+    physics.setWorldBounds(new Rect(0,-0.5*iotAttrct.height,iotAttrct.width,iotAttrct.height*2+20));
     
     for(var i = 0; i < num_particles; i++){
       // this is how we create a 2D array
@@ -488,7 +487,7 @@ etreeskch.setup = function(){
   splitGoalVectors[0] = [];
   splitGoalVectors[0][0] = etreeskch.createVector(0,  etreeskch.height / 2);
   interStep= fr*step;
-  goalRange = width/height*35;
+  goalRange = etreeskch.width/etreeskch.height*35;
   etreeskch.stroke( etreeskch.color('#94EE2D'));
   etreeskch.background( etreeskch.color('#251818'));
   mouseVec =  etreeskch.createVector( etreeskch.width/2,  etreeskch.height/2);
@@ -614,7 +613,7 @@ p5.disableFriendlyErrors = true;
   rnd2 = getRnd(-5,5);
   rnd3 = getRnd(-5,5);
   elesketch.stroke(elesketch.color('#94EE2D'));
-  strokeWeight(1.5);
+  elesketch.strokeWeight(1.5);
   elesketch.fill(elesketch.color('#251818'));
   for(let i = 0;i<numOfPartic;i++){
     particlesLocations[i] =
@@ -893,10 +892,10 @@ autosk.setup = function() {
     else autosk.noLoop();
   });
   autosk.background(autosk.color('#251818'));
-   ortho(-autosk.width / 2, autosk.width / 2, autosk.height / 2, -autosk.height / 2, 6000, -6000);
+  autosk.ortho(-autosk.width / 2, autosk.width / 2, autosk.height / 2, -autosk.height / 2, 6000, -6000);
     autosk.push();
     autosk.angleMode(autosk.RADIANS);
-        perspective(autosk.PI / 8, width / height, 0.1, 1500);
+        perspective(autosk.PI / 8, autosk.width / autosk.height, 0.1, 1500);
     pop();
   mousePos = autosk.createVector(autosk.width/4*3,-autosk.height/6*5.5);
     kababs = autosk.round(2+autosk.width/40);
@@ -918,7 +917,7 @@ autosk.setup = function() {
   autosk.background(autosk.color(bgcol));
   autosk.rotateY(-90);
   autosk.noFill();
-  autosk.stroke(color(greencol))
+  autosk.stroke(autosk.color(greencol))
     if(autosk.winMouseX>0&&autosk.winMouseY>0) mousePos = autosk.createVector(autosk.winMouseX, autosk.winMouseY)
     kababs = autosk.round(autosk.map(mousePos.x,0, autosk.width, 2,autosk.width/40));
     totalLength = 0;

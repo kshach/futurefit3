@@ -338,7 +338,7 @@ var noisingSketch = function(etexS) {
     
     
     for(let hi = 0; hi< theOne; hi++){
-      smooth();
+      etexS.smooth();
       let y = -margin*2+yjump*hi/2;
       etexS.beginShape();
       for(i = 0; i < theOne; i++){
@@ -855,7 +855,7 @@ function brokenUpdate(){
    elesketch.rotateX(t*-4);
    elesketch.translate(b20goal);
    elesketch.model(breaks[19]);
-  pop();
+   elesketch.pop();
   }
 }
 breaksp5 = new p5(recraftEleSketch, document.getElementById('breaksimg'));
@@ -895,7 +895,7 @@ autosk.setup = function() {
     autosk.push();
     autosk.angleMode(autosk.RADIANS);
     autosk.perspective(autosk.PI / 8, autosk.width / autosk.height, 0.1, 1500);
-    pop();
+    autosk.pop();
   mousePos = autosk.createVector(autosk.width/4*3,-autosk.height/6*5.5);
     kababs = autosk.round(2+autosk.width/40);
   for(let i = 0; i< kababs; i++){

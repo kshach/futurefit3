@@ -436,7 +436,7 @@ iotAttrct.setup = function() {
   }
   
   iotAttrct.mouseDragged = function(){
-    mousePos.set(iotAttrct.mouseX, iotAttrct.mouseY);
+    mousePos.set(iotAttrct.winMouseX, iotAttrct.winMouseY);
   }
   
   iotAttrct.mouseReleased = function(){
@@ -1007,7 +1007,7 @@ var scanImgSketch = function(scnimage){
       scnimage.push();
       scnimage.translate(0,((1-xCalc)*yspacing*-howmany)/2, 0);
       for(let j = 0; j< howmany/2;j++){
-        scnimage.rotateZ(scnimage.map(scnimage.mouseX,0,scnimage.width,-45,45));
+        scnimage.rotateZ(scnimage.map(scnimage.winMouseX,0,scnimage.width,-45,45));
         
         for(let i = 0; i< howmany;i++){
           scnimage.rotateY(rotdivider);

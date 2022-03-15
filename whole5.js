@@ -267,7 +267,7 @@ soundsketch.setup = function() {
   soundsketch.push();
   soundsketch.translate(translateByX, translateByY);
   jupPos = soundsketch.createVector(0,0);
-  jupPos.set(soundsketch.abs(soundsketch.map(mousePosPlanetry,0,soundsketch.width,60,translateByX-80)), soundsketch.abs(soundsketch.map(mousePosPlanetry,0,soundsketch.width,60,translateByX-80))).rotate(frameCount);
+  jupPos.set(soundsketch.abs(soundsketch.map(mousePosPlanetry,0,soundsketch.width,60,translateByX-80)), soundsketch.abs(soundsketch.map(mousePosPlanetry,0,soundsketch.width,60,translateByX-80))).rotate(soundsketch.frameCount);
   soundsketch.ellipse(jupPos.x,jupPos.y, 20, 20);
   soundsketch.pop();
   soundsketch.ellipse(translateByX,translateByY,100,100);
@@ -325,15 +325,14 @@ var noisingSketch = function(etexS) {
     if(etexS.width>500) etexS.translate(-etexS.width/6,0,0);
     else {
       etexS.scale(0.8);
-      etexS.translate(0,-height/3,0);
+      etexS.translate(0,-etexS.height/3,0);
     }
     etexS.scale(etexS.sin(etexS.frameCount / 60)*0.1+0.3,0.4,0.4);
-    if(0<etexS.winMouseX<etexS.width&&0<winMouseY<etexS.height){
+    if(0<etexS.winMouseX<etexS.width&&0<etexS.winMouseY<etexS.height){
       etexS.translate(etexS.winMouseX-etexS.width/2, etexS.winMouseY-etexS.height/2,-etexS.winMouseX-etexS.winMouseY);
       etexS.rotateY(etexS.winMouseX/100);
       etexS.rotateX(etexS.winMouseX/etexS.height*10);
     }
-    //let rotExp = sin(frameCount/1000000)
     etexS.background(etexS.color(bg));
     etexS.noFill();
     
@@ -343,8 +342,8 @@ var noisingSketch = function(etexS) {
       let y = -margin*2+yjump*hi/2;
       etexS.beginShape();
       for(i = 0; i < theOne; i++){
-        etexS.rotateY(frameCount*i/1000000);
-        etexS.rotateX(frameCount*i/1000000);
+        etexS.rotateY(etexS.frameCount*i/1000000);
+        etexS.rotateX(etexS.frameCount*i/1000000);
         etexS.vertex(-margin*2+xjump*i,
         y+noiseScale*etexS.noise(xjump*i,y, t),noiseScale*etexS.noise(xjump*i, y, t))
       }
@@ -399,7 +398,7 @@ iotAttrct.setup = function() {
         
         // And add the particle to the physics world
         physics.addParticle(particles[i][j]);
-        physics.addBehavior(new   AttractionBehavior(particles[i][j], height/8, -0.3, 0.5));
+        physics.addBehavior(new   AttractionBehavior(particles[i][j], iotAttrct.height/8, -0.3, 0.5));
       }
       physics.addSpring(new VerletSpring2D(particles[i][0],particles[i][1],iotAttrct.sqrt(iotAttrct.width)*4, stiffness));
     }
@@ -639,7 +638,7 @@ function findRndLocation(){
   }
   elesketch.background(elesketch.color('#251818'));
   elesketch.rotateY(-elesketch.frameCount/2);
-  elesketch.scale(elesketch.map(elesketch.winMouseY,0,elesketch.height,1.1,1),map(elesketch.winMouseY,0,elesketch.height,1.25,1),map(elesketch.winMouseY,0,elesketch.height,1.1,1));
+  elesketch.scale(elesketch.map(elesketch.winMouseY,0,elesketch.height,1.1,1),elesketch.map(elesketch.winMouseY,0,elesketch.height,1.25,1),elesketch.map(elesketch.winMouseY,0,elesketch.height,1.1,1));
   if(elesketch.winMouseX<=100) elesketch.model(unbroken);
   else if(elesketch.winMouseX>100) brokenUpdate();
   for(let i = 0; i< particlesLocations.length;i++){
@@ -895,7 +894,7 @@ autosk.setup = function() {
   autosk.ortho(-autosk.width / 2, autosk.width / 2, autosk.height / 2, -autosk.height / 2, 6000, -6000);
     autosk.push();
     autosk.angleMode(autosk.RADIANS);
-        perspective(autosk.PI / 8, autosk.width / autosk.height, 0.1, 1500);
+    autosk.perspective(autosk.PI / 8, autosk.width / autosk.height, 0.1, 1500);
     pop();
   mousePos = autosk.createVector(autosk.width/4*3,-autosk.height/6*5.5);
     kababs = autosk.round(2+autosk.width/40);
@@ -908,7 +907,7 @@ autosk.setup = function() {
 
   autosk.draw = function() {
     //fit for screens
-  if(autosk.width>500) autosk.translate(-autosk.width/6,-hautosk.height/6,0);
+  if(autosk.width>500) autosk.translate(-autosk.width/6,-autosk.height/6,0);
   else {
     autosk.translate(0,-autosk.height/4,0);
     autosk.scale(3);

@@ -327,7 +327,7 @@ var noisingSketch = function(etexS) {
       etexS.scale(0.8);
       etexS.translate(0,-etexS.height/3,0);
     }
-    etexS.scale(etexS.sin(etexS.frameCount / 60)*0.1+0.3,0.4,0.4);
+    etexS.scale(msin(etexS.frameCount / 60)*0.1+0.3,0.4,0.4);
     if(0<etexS.winMouseX<etexS.width&&0<etexS.winMouseY<etexS.height){
       etexS.translate(etexS.winMouseX-etexS.width/2, etexS.winMouseY-etexS.height/2,-etexS.winMouseX-etexS.winMouseY);
       etexS.rotateY(etexS.winMouseX/100);
@@ -936,11 +936,11 @@ autosk.setup = function() {
             }
             autosk.translate(thisScale - (xScales[i]/2-i) ,0,0);
             autosk.scale(i/14);
-            let yScale = autosk.height/8+(autosk.sin(i*10+autosk.frameCount)*10);
-            let zScale = autosk.height/8+(autosk.sin(30+i*10+autosk.frameCount)*10);
+            let yScale = autosk.height/8+(msin(i*10+autosk.frameCount)*10);
+            let zScale = autosk.height/8+(msin(30+i*10+autosk.frameCount)*10);
             autosk.rotateX(-i*5+autosk.frameCount/kababs-i);
-            autosk.rotateZ(-i*autosk.winMouseX/1000/(kababs-i)+autosk.sin(-autosk.frameCount/95)*4);
-            autosk.rotateY(i*autosk.winMouseY/1000/(kababs-i)+autosk.sin(autosk.frameCount/100)*5);
+            autosk.rotateZ(-i*autosk.winMouseX/1000/(kababs-i)+msin(-autosk.frameCount/95)*4);
+            autosk.rotateY(i*autosk.winMouseY/1000/(kababs-i)+msin(autosk.frameCount/100)*5);
             autosk.box(xScales[i], yScale, zScale,1,1);   
         autosk.pop();
     }
@@ -981,7 +981,7 @@ var scanImgSketch = function(scnimage){
       rotdivider = 360/howmany;
       facingRot = 90/howmany;
       scnimage.ortho(-scnimage.width / 2, scnimage.width / 2, scnimage.height / 2, -scnimage.height / 2, 6000, -6000);
-      let d = scnimage.sin(270);
+      let d = msin(270);
     }
     
     scnimage.draw = function() {
@@ -1013,7 +1013,7 @@ var scanImgSketch = function(scnimage){
           scnimage.rotateY(rotdivider);
         scnimage.push();
           scnimage.translate(300, i*yspacing, 0);
-          scnimage.rotateZ(-90+facingRot*scnimage.sin(scnimage.map(i,0,howmany,90,270))*5);   
+          scnimage.rotateZ(-90+facingRot*msin(scnimage.map(i,0,howmany,90,270))*5);   
           scnimage.rotateY(45);
           scnimage.cone(50,100,5,1, false);
         scnimage.pop();

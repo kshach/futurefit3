@@ -1,3 +1,7 @@
+//Code and p5js sketches were written by Shachar Kantor, shachar.kantor@gmail.com
+
+//#region p5sketches
+
 //main image
 var mainImageSketch = function(mainImageSketch) {
     const stringy = "Future Fit #3"; //words to be displayed
@@ -61,9 +65,9 @@ var mainImageSketch = function(mainImageSketch) {
         // var introCanvas = createCanvas(introwidth, introheight);
         // introCanvas.parent('introContainer');
 
-        let maincnv = mainImageSketch.createCanvas(introwidth, introheight);
+        mainImageSketch.createCanvas(introwidth, introheight);
         mainImageSketch.frameRate(30);
-        maincnv.addEventListener('maintrigger', () => {
+        document.addEventListener('maintrigger', () => {
           if(mainimgtf) mainImageSketch.loop();
           else mainImageSketch.noLoop();
         });
@@ -155,7 +159,6 @@ var mainImageSketch = function(mainImageSketch) {
   };
   mainp5 = new p5(mainImageSketch, document.getElementById('introContainer'));
 
-
 //sound img
 var soundImgSketch = function(soundsketch) {
     //colors
@@ -185,9 +188,9 @@ var soundImgSketch = function(soundsketch) {
 
     soundsketch.setup = function() {
       soundsketch.frameRate(30);
-      let sndcnv = soundsketch.createCanvas(soundwidth, soundheight);
+      soundsketch.createCanvas(soundwidth, soundheight);
 
-      sndcnv.addEventListener('sndtrigger', () => {
+      document.addEventListener('sndtrigger', () => {
         if(sndsketchtf) soundsketch.loop();
         else soundsketch.noLoop();
       });
@@ -265,7 +268,6 @@ var soundImgSketch = function(soundsketch) {
 }
 sndimgp5 = new p5(soundImgSketch, document.getElementById('soundimg'));
 
-
 //noising sketch etextile
 var noisingSketch = function(etexS) {
   const wid = 40;
@@ -293,9 +295,9 @@ var noisingSketch = function(etexS) {
    etexS.setup = function() {
     etexS.frameRate(30);
     margin = etexS.width/2;
-    let etexcnv = etexS.createCanvas(introwidthetex, introheightetex, etexS.WEBGL);
+    etexS.createCanvas(introwidthetex, introheightetex, etexS.WEBGL);
 
-    etexcnv.addEventListener('etextrigger', () => {
+    document.addEventListener('etextrigger', () => {
       if(etexsketchtf) etexS.loop();
       else etexS.noLoop();
     });
@@ -356,9 +358,9 @@ console.log('iot width is: '+iotwidth);
 p5.disableFriendlyErrors = true;
 
 iotAttrct.setup = function() {
-  let iotcnv = iotAttrct.createCanvas(iotwidth, iotheight);
+  iotAttrct.createCanvas(iotwidth, iotheight);
 
-  iotcnv.addEventListener('iotevent', () => {
+  document.addEventListener('iotevent', () => {
     if(iotimgtf) iotAttrct.loop();
     else iotAttrct.noLoop();
   });
@@ -428,7 +430,6 @@ iotAttrct.mouseReleased = function (){
 }}
 iotimgp5 = new p5(fallingAttractorsSketch, document.getElementById('iotimg'));
 
-
 //etree
 var etreeSketch = function(etreeskch){
 let goalRange;
@@ -453,9 +454,9 @@ let etreebounding = document.getElementById('eteximg');
 
 etreeskch.setup = function(){
   etreeskch.frameRate(30);
-  let emotioncnv = etreeskch.createCanvas( introwidthetree, introheightetree);
+  etreeskch.createCanvas( introwidthetree, introheightetree);
 
-  emotioncnv.addEventListener('emotiontrigger', () => {
+  document.addEventListener('emotiontrigger', () => {
     if(emotionimgtf) etreeskch.loop();
     else etreeskch.noLoop();
   });
@@ -562,9 +563,9 @@ p5.disableFriendlyErrors = true;
 
  elesketch.setup = function() {
   elesketch.frameRate(30);
- let cftingele = elesketch.createCanvas(breakswidth, breaksheight, elesketch.WEBGL);
+ elesketch.createCanvas(breakswidth, breaksheight, elesketch.WEBGL);
 
- cftingele.addEventListener('breakstrigger', () => {
+ document.addEventListener('breakstrigger', () => {
   if(breaksimgtf) elesketch.loop();
   else elesketch.noLoop();
 });
@@ -839,9 +840,9 @@ var autodrawSketch = function(autosk){
 
   autosk.setup = function() {
     autosk.frameRate(30);
-    let autodcnv = autosk.createCanvas(drawwidth, drawheight, autosk.WEBGL);
+    autosk.createCanvas(drawwidth, drawheight, autosk.WEBGL);
 
-    autodcnv.addEventListener('autodrawtrigger', () => {
+    document.addEventListener('autodrawtrigger', () => {
       if(autodrawimgtf) autosk.loop();
       else autosk.noLoop();
     });
@@ -984,9 +985,9 @@ p5.disableFriendlyErrors = true;
 
 touchskch.setup = function() {
   touchskch.frameRate(30);
-let touchdcnv = touchskch.createCanvas(tdwidth, tdheight, touchskch.WEBGL);
+  touchskch.createCanvas(tdwidth, tdheight, touchskch.WEBGL);
 
-touchdcnv.addEventListener('tdtrigger', () => {
+document.addEventListener('tdtrigger', () => {
   if(touchdimgdtf) touchskch.loop();
   else touchskch.noLoop();
 });
@@ -1034,3 +1035,203 @@ touchskch.draw = function() {
 }
 }
 tdp5 = new p5(tdSketch, document.getElementById('touchDimg'));
+//#endregion
+
+//#region sketch observer for performance
+var mainimgtf = true;
+const mainevent = new Event('maintrigger');
+
+var sndsketchtf = true;
+const sndevent = new Event('sndtrigger');
+
+var etexsketchtf = true;
+const etexevent = new Event('etextrigger');
+
+var iotimgtf = true;
+const iotevent = new Event('iotevent');
+
+var emotionimgtf = true;
+const emotionevent = new Event('emotiontrigger');
+
+var breaksimgtf = true;
+const breaksevent = new Event('breakstrigger');
+
+var autodrawimgtf = true;
+const autodrawevent = new Event('autodrawtrigger');
+
+var scanimgtf = true;
+const scanevent = new Event('scantrigger');
+
+var touchdimgdtf = true;
+const touchdevent = new Event('tdtrigger');
+
+var mainp5;
+var sndimgp5;
+var etexp5;
+var iotimgp5;
+var etreep5;
+var breaksp5;
+var autodrawp5;
+var scanp5;
+var tdp5;
+var ids = ['introContainer', 'soundimg', 'eteximg', 'iotimg', 'emotionimg', 'breaksimg', 'autodrawimg', 'scanimg', 'touchDimg'];
+
+
+window.addEventListener('load', (event) => {
+    console.log("start loaded");
+       ids.forEach(entry => {elementObs(entry)});
+    });
+
+function testSketches() {
+    ids.forEach(entry => {elementObs(entry)});
+}
+
+function elementObs(elid){
+    var isElement = document.getElementById(elid);
+    let options = {
+        root: document.getElementById(elid),
+        rootMargin: '0px',
+        threshold: [0, 0.8, 1]
+      };
+    if(!!window.IntersectionObserver){
+    let observer = new IntersectionObserver((entries, options) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                console.log("got here with "+isElement);
+                switch (elid) {
+                    case "introContainer":
+                       
+                        // if (mainp5==null) mainp5 = new p5(mainImageSketch, document.getElementById('introContainer'));
+                        mainimgtf = true;
+                        document.dispatchEvent(mainevent);
+                        break;
+
+                    case "soundimg":
+                        // if (sndimgp5==null) sndimgp5 = new p5(soundImgSketch, document.getElementById('soundimg'));
+                        sndsketchtf = true;
+                        document.dispatchEvent(sndevent);
+                        break;
+
+                    case 'eteximg':
+                        // if (etexp5==null) etexp5 = new p5(noisingSketch, document.getElementById('eteximg'));
+                        etexsketchtf= true;
+                        document.dispatchEvent(etexevent);
+                        break; 
+
+                    case 'iotimg':
+                        // if (iotimgp5==null) iotimgp5 = new p5(fallingAttractorsSketch, document.getElementById('iotimg'));
+                        iotimgtf = true;
+                        document.dispatchEvent(iotevent);
+                        break;
+
+                    case 'emotionimg':
+                        // if (etreep5==null) etreep5 = new p5(etreeSketch, document.getElementById('emotionimg'));
+                        emotionimgtf = true;
+                        document.dispatchEvent(emotionevent);
+                        break;
+
+                    case 'breaksimg':
+                        // if (breaksp5==null) breaksp5 = new p5(recraftEleSketch, document.getElementById('breaksimg'));
+                        breaksimgtf = true;
+                        document.dispatchEvent(breaksevent);
+                        break;
+
+                    case 'autodrawimg':
+                        // if (autodrawp5==null) autodrawp5 = new p5(autodrawSketch, document.getElementById('autodrawimg'));
+                        autodrawimgtf = true;
+                        document.dispatchEvent(autodrawevent);
+                        break;
+
+                    case 'scanimg':
+                        // if (scanp5==null) scanp5 = new p5(scanImgSketch, document.getElementById('scanimg'));
+                        scanimgtf = true;
+                        document.dispatchEvent(scanevent);
+                        break;
+                    case 'touchDimg':
+                        // if (tdp5==null) tdp5 = new p5(tdSketch, document.getElementById('touchDimg'));
+                        touchdimgdtf = true;
+                        document.dispatchEvent(touchdevent);
+                        break;
+                }
+            }
+            else{
+                switch (elid) {
+                    case "introContainer":
+                       
+                        // if (mainp5==null) mainp5 = new p5(mainImageSketch, document.getElementById('introContainer'));
+                        mainimgtf = false;
+                        console.log("mainimgtf false");
+                        document.dispatchEvent(mainevent);
+                        break;
+
+                    case "soundimg":
+                        // if (sndimgp5==null) sndimgp5 = new p5(soundImgSketch, document.getElementById('soundimg'));
+                        sndsketchtf = false;
+                        console.log("sndsketchtf false");
+                        document.dispatchEvent(sndevent);
+                        break;
+
+                    case 'eteximg':
+                        // if (etexp5==null) etexp5 = new p5(noisingSketch, document.getElementById('eteximg'));
+                        etexsketchtf= false;
+                        console.log("etexsketchtf false");
+                        document.dispatchEvent(etexevent);
+                        break; 
+
+                    case 'iotimg':
+                        // if (iotimgp5==null) iotimgp5 = new p5(fallingAttractorsSketch, document.getElementById('iotimg'));
+                        iotimgtf = false;
+                        console.log("iotimgtf false");
+                        document.dispatchEvent(iotevent);
+                        break;
+
+                    case 'emotionimg':
+                        // if (etreep5==null) etreep5 = new p5(etreeSketch, document.getElementById('emotionimg'));
+                        emotionimgtf = true;
+                        console.log("emotionimgtf false");
+                        document.dispatchEvent(emotionevent);
+                        break;
+
+                    case 'breaksimg':
+                        // if (breaksp5==null) breaksp5 = new p5(recraftEleSketch, document.getElementById('breaksimg'));
+                        breaksimgtf = false;
+                        console.log("breaksimgtf false");
+                        document.dispatchEvent(breaksevent);
+                        break;
+
+                    case 'autodrawimg':
+                        // if (autodrawp5==null) autodrawp5 = new p5(autodrawSketch, document.getElementById('autodrawimg'));
+                        autodrawimgtf = false;
+                        console.log("autodrawimgtf false");
+                        document.dispatchEvent(autodrawevent);
+                        break;
+
+                    case 'scanimg':
+                        // if (scanp5==null) scanp5 = new p5(scanImgSketch, document.getElementById('scanimg'));
+                        scanimgtf = false;
+                        console.log("mainimscanimgtfgtf false");
+                        document.dispatchEvent(scanevent);
+                        break;
+                    case 'touchDimg':
+                        // if (tdp5==null) tdp5 = new p5(tdSketch, document.getElementById('touchDimg'));
+                        touchdimgdtf = false;
+                        console.log("touchdimgdtf false");
+                        document.dispatchEvent(touchdevent);
+                        break;
+                }
+
+            }
+        });
+    }, {});
+    
+    observer.observe(isElement);
+    
+}}
+function getRnd(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+function msin (angle) {
+  return Math.sin(angle * (Math.PI / 180));
+}
+//#endregion
